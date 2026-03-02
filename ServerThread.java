@@ -31,7 +31,13 @@ public class ServerThread implements Runnable {
             BufferedReader in_socket = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out_socket = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
             
-            out_socket.println("Welcome! You are client number " + client_number + ". What's your name? "); // send "Welcome" to the Client
+            // Lógica para saber si el ID es par (modulo de 2 igual a 0)
+            String saludo = "Welcome! You are client number " + client_number + ".";
+            if (client_number % 2 == 0) {
+                saludo = saludo + " ¡Tienes mucha suerte!";
+            }
+            out_socket.println(saludo);
+            
             String message = in_socket.readLine(); // receive "Thanks!"
             System.out.println("Client says: " + message); // display Client's message in the console
             
@@ -44,3 +50,4 @@ public class ServerThread implements Runnable {
         }
     }
 }
+
