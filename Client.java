@@ -35,11 +35,16 @@ public class Client {
 
     public static void main(String[] args) {
         try {
-            new Client();
+            // El bucle for hace los 3 llamados que pide el ejercicio
+            for (int i = 1; i <= 3; i++) {
+                System.out.println("--- Iniciando llamado " + i + " ---");
+                new Client();
+                Thread.sleep(1000); // Pausa de 1 segundo entre llamados para no saturar
+            }
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
         }
     }
+
 
 }
